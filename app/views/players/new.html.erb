@@ -1,0 +1,11 @@
+<h2 class="main text-center mb">Create a Player</h2>
+
+<div class="From">
+  <%= form_for @player, url: players_path do |f| %>
+    <div class="mb-1">
+      <%= f.label :name, class: "form-label" %><br>
+      <%= f.text_field :name, class: "form-control", required: true %><br>
+      <%= f.submit "Create Game", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

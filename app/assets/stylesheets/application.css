@@ -1,0 +1,17 @@
+.cursor-pointer {
+   cursor: pointer;
+}
+
+.end {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.mr {
+  margin-right: 12px;
+}
+
+.mbo {
+  margin-bottom: 5rem;
+}

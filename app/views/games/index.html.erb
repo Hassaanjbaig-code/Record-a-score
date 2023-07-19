@@ -1,0 +1,35 @@
+<h2 class="text-center mbo">Games</h2>
+<div class="end">
+  <%= link_to "Add Game",
+  new_player_game_path(player_id: @player.id),
+  class: "btn btn-primary mr" %>
+</div>
+<% if @games.length == 0 %>
+  <h3 class="text-center">No games found</h3>
+<% else %>
+  <div class="row">
+    <% @games.each do |game| %>
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= game.name %></h5>
+            <p class="card-text">Number of cash: <%= game.cashes.count %></p>
+            <p class="card-text"><%= game.created_at.strftime("%I:%M:%S %p") %>
+              <br/><span><%= game.created_at.strftime("%b %Y %d") %></span></p>
+            <a
+              href="<%= " /players/#{@player.id}/games/#{game.id}/cashes" %>"
+              class="btn btn-primary"
+            >Cash List</a>
+            <%= link_to "Delete",
+            player_game_path(@player, game),
+            class: "btn btn-danger cursor-pointer",
+            data: {
+              turbo_method: :delete,
+              turbo_confirm: "Are you sure?"
+            } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

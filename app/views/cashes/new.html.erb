@@ -1,0 +1,21 @@
+<h2 class="text-center mb-3"> Add a cash </h2>
+
+<%= form_for @cash, url: player_game_cashes_path do |f| %>
+  <div class="mb-1">
+  <%= f.label :cash_out, class: "form-label" %><br>
+  <%= f.number_field :cash_out, class:"form-control", required: true %><br>
+  </div>
+  <div class="mb-1">
+  <%= f.label :deposit, class: "form-label" %><br>
+  <%= f.number_field :deposit, class:"form-control", required: true %><br>
+  </div>
+  <div class="mb-1">
+  <%= f.label :promo, class: "form-label" %><br>
+  <%= f.number_field :promo, class:"form-control", required: true %><br>
+  </div>
+  <div class="mb-1">
+  <%= f.label :freeplay, class: "form-label" %><br>
+  <%= f.number_field :freeplay, class:"form-control", required: true %><br>
+  </div>
+  <%= f.submit "Create Cash",class: "btn btn-primary" %>
+<% end %>

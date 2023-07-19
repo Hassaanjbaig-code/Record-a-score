@@ -1,0 +1,56 @@
+<h2 class="text-center">Cash Status</h2>
+
+<div class="end">
+  <button type="button" class="btn btn-primary mr">
+    <a
+      class="text-reset text-decoration-none"
+      href="<%= new_player_game_cash_path(player_id: @player.id, game_id: @game.id) %>"
+    >Add Cash</a>
+  </button>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Created At</th>
+      <th scope="col">Updated At</th>
+      <th scope="col">Deposit</th>
+      <th scope="col">Cash Out</th>
+      <th scope="col">Promo</th>
+      <th scope="col">Freeplay</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cashes.each do |cash| %>
+      <tr>
+        <td scope="row"><%= cash.created_at.strftime("%I:%M:%S %p") %>
+          <br/><span><%= cash.created_at.strftime("%b %Y %d") %></span>
+        </td>
+        <td scope="row"><%= cash.updated_at.strftime("%I:%M:%S %p") %>
+          <br/><span><%= cash.updated_at.strftime("%b %Y %d") %></span>
+        </td>
+        <td><%= cash.deposit %>$</td>
+        <td><%= cash.cash_out %>$</td>
+        <td><%= cash.promo %></td>
+        <td><%= cash.freeplay %></td>
+        <td>
+          <button type="button" class="btn btn-dark cursor-pointer">
+            <a
+              class="text-decoration-none text-reset"
+              href="<%= edit_player_game_cash_path(player_id: @player.id, game_id: @game.id, id: cash.id) %>"
+            >Edit</a>
+          </button>
+        </td>
+        <td>
+          <%= link_to "Delete",
+          player_game_cash_path(player_id: @player.id, game_id: @game.id, id: cash.id),
+          class: "btn btn-danger cursor-pointer",
+          data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+          } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
